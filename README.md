@@ -24,15 +24,17 @@ The first purpose of the capstone project is to give a chance to revise all the 
 
 # Project report Template
 
-## Title: [your title goes here]
+## Title: AI Fitness Goal Coach
 
 ## Overview
 
-[your overview goes here. My project does this that  etc]
+My project is a personalized training guidance system that helps users achieve specific fitness or calisthenics goals such as muscle-ups, handstands, planche progressions or general strength development. It also gives a link to follow tutorial for any exercise if you don't know how to perfomr it correctly(Form is a very important factor). It also provides a dailt nutrition plan including calories consumed, water content, protein content, carbs content, fats content. Unlike traditional workout plans that follow a fit approach, this system creates a customized, step-by-step progression plan based entirely on the user’s current fitness level, available equipment, time constraints, and desired goal.
+
+After user gives their input they are given a preview of what a single day is like, then the user is asked if he needs to change the time or number of day. The system will modify future steps accordingly. Overall, this project focuses on simplicity, safety, and offering a smart and adaptable way to reach fitness goals without needing a coach, gym membership, or prior experience or needing to search the web and then calculate the schedule and nutritoin plan.
 
 ## Reason for picking up this project
 
-Explain how this project is aligned with this course content.
+I was interested in calesthenics, but was unable to do so because I wasn't able to get much information on my own as week reaching out to people didn't help that much. So I thought of making a project on this. This project would help me in my progress and also in my curernt health status.
 
 ## Video Summary Link: 
 
@@ -50,11 +52,15 @@ Make a short -  3-5 min video of yourself, put it on youtube/googledrive, and pu
 
 I plan to execute these steps to complete my project.
 
-- [TODO] Step 1 involves blah blah
-- [TODO] Step 2 involves blah blah
-- [TODO] Step 3 involves blah blah
-- ...
-- [TODO] Step n involves blah blah
+- [TODO] Step 1: Project Setup - Defined file structure, environment variables, and dependencies.
+- [TODO] Step 2: Core Logic Implementation - Created Pydantic models for structured user input and workout plans.
+- [TODO] Step 3: RAG Pipeline - Implemented web search (Tavily), content scraping, and vector embedding (ChromaDB) for context-aware advice.
+- [TODO] Step 4: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
+- [TODO] Step 5: Feasibility Check - Added logic to assess if the user's goal is realistic within the timeframe.
+- [TODO] Step 6: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule.
+- [TODO] Step 7: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
+- [TODO] Step 8: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
+- [TODO] Step 9: Final Polish - Refined error handling and verified end-to-end functionality.
 
 ## Conclusion:
 

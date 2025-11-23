@@ -1,0 +1,12 @@
+langgraph
+langchain
+langchain-openai
+langchain-community
+beautifulsoup4
+chromadb
+pydantic
+python-dotenv
+langchain-tavily
+pillow
+requests
+langchain-chroma

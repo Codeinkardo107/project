@@ -55,7 +55,7 @@ I plan to execute these steps to complete my project.
 - [DONE] Step 1: Project Setup - Defined file structure, environment variables, and dependencies.
 - [DONE] Step 2: Core Logic Implementation - Created Pydantic models for structured user input and workout plans.
 - [DONE] Step 3: RAG Pipeline - Implemented web search (Tavily), content scraping
-- [TODO] Step 4: vector embedding (ChromaDB) for context-aware advice.
+- [DONE] Step 4: vector embedding (ChromaDB) for context-aware advice.
 - [TODO] Step 5: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
 - [TODO] Step 6: Feasibility Check - Added logic to assess if the user's goal is realistic within the timeframe.
 - [TODO] Step 7: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule.

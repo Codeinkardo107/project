@@ -99,3 +99,29 @@ def process_resources(state: AgentState):
     
     return {"resources": resources}
 
+
+def assess_feasibility(state: AgentState):
+    """Estimates time to goal and checks feasibility (< 2 years)."""
+    print("--- Assessing Feasibility ---")
+    profile = state["profile"]
+    
+    parser = PydanticOutputParser(pydantic_object=Assessment)
+    prompt = ChatPromptTemplate.from_template(
+        "Assess the feasibility of the following fitness goal.\n"
+        "Profile: {profile}\n"
+        "Provide a REALISTIC time estimate based on standard fitness progression (progressive overload).\n"
+        "Examples:\n"
+        "- 10 -> 50 pushups: 7-10 weeks\n"
+        "- 0 -> 10 pullups: 3-6 months\n"
+        "- Learning a handstand: 6-10 months\n"
+        "Is it achievable within 2 years with the given time constraints?\n"
+        "{format_instructions}"
+    )
+    chain = prompt | llm | parser
+    assessment = chain.invoke({
+        "profile": profile.model_dump_json(),
+        "format_instructions": parser.get_format_instructions()
+    })
+    
+    return {"assessment": assessment}
+

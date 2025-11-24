@@ -3,7 +3,7 @@ from typing import List, Optional
 
 class UserProfile(BaseModel):
     goal: str = Field(description="The user's specific fitness goal (e.g., '1 muscleup', 'handstand').")
-    current_fitness: str = Field(description="User's current fitness level (e.g., '10 pushups', '20 pullups').")
+    current_fitness: str = Field(description="User's current fitness level (comma separated values can also be usede.g., '10 pushups', '20 pullups').")
     time_per_day: int = Field(default=30, description="Time available per day in minutes.")
     days_per_week: int = Field(default=3, description="Number of workout days per week.")
     equipment: List[str] = Field(default_factory=list, description="List of available equipment.")
@@ -22,3 +22,8 @@ class WeeklySchedule(BaseModel):
     workouts: List[DailyWorkout] = Field(description="List of daily workouts for the week.")
     notes: Optional[str] = Field(description="General notes or focus for the week.")
     estimated_time: str = Field(description="Estimated time to achieve the goal (e.g., '3 months').")
+
+class Assessment(BaseModel):
+    estimated_time: str = Field(description="Estimated time to achieve the goal.")
+    is_feasible: bool = Field(description="True if achievable within 2 years, False otherwise.")
+    reason: str = Field(description="Reason for the feasibility assessment.")

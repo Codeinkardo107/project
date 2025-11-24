@@ -34,7 +34,7 @@ After user gives their input they are given a preview of what a single day is li
 
 ## Reason for picking up this project
 
-I was interested in calesthenics, but was unable to do so because I wasn't able to get much information on my own as week reaching out to people didn't help that much. So I thought of making a project on this. This project would help me in my progress and also in my curernt health status.
+I was interested in calesthenics, but was unable to do so because I wasn't able to get much information on my own, as well as reaching out to people didn't help much. So I thought of making a project on this. This project would help me in progress and in curernt health status.
 
 ## Video Summary Link: 
 
@@ -52,8 +52,8 @@ Make a short -  3-5 min video of yourself, put it on youtube/googledrive, and pu
 
 I plan to execute these steps to complete my project.
 
-- [TODO] Step 1: Project Setup - Defined file structure, environment variables, and dependencies.
-- [TODO] Step 2: Core Logic Implementation - Created Pydantic models for structured user input and workout plans.
+- [DONE] Step 1: Project Setup - Defined file structure, environment variables, and dependencies.
+- [DONE] Step 2: Core Logic Implementation - Created Pydantic models for structured user input and workout plans.
 - [TODO] Step 3: RAG Pipeline - Implemented web search (Tavily), content scraping, and vector embedding (ChromaDB) for context-aware advice.
 - [TODO] Step 4: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
 - [TODO] Step 5: Feasibility Check - Added logic to assess if the user's goal is realistic within the timeframe.

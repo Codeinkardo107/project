@@ -54,13 +54,14 @@ I plan to execute these steps to complete my project.
 
 - [DONE] Step 1: Project Setup - Defined file structure, environment variables, and dependencies.
 - [DONE] Step 2: Core Logic Implementation - Created Pydantic models for structured user input and workout plans.
-- [TODO] Step 3: RAG Pipeline - Implemented web search (Tavily), content scraping, and vector embedding (ChromaDB) for context-aware advice.
-- [TODO] Step 4: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
-- [TODO] Step 5: Feasibility Check - Added logic to assess if the user's goal is realistic within the timeframe.
-- [TODO] Step 6: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule.
-- [TODO] Step 7: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
-- [TODO] Step 8: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
-- [TODO] Step 9: Final Polish - Refined error handling and verified end-to-end functionality.
+- [DONE] Step 3: RAG Pipeline - Implemented web search (Tavily), content scraping
+- [TODO] Step 4: vector embedding (ChromaDB) for context-aware advice.
+- [TODO] Step 5: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
+- [TODO] Step 6: Feasibility Check - Added logic to assess if the user's goal is realistic within the timeframe.
+- [TODO] Step 7: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule.
+- [TODO] Step 8: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
+- [TODO] Step 9: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
+- [TODO] Step 10: Final Polish - Refined error handling and verified end-to-end functionality.
 
 ## Conclusion:
 

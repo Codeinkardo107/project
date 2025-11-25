@@ -9,7 +9,7 @@ load_dotenv()
 # For suppressing LangChain deprecation warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-# Max 3 results
+# Tavily returns a list of dicts: [{'url': '...', 'content': '...'}]
 search = TavilySearchResults(max_results=3)
 
 @tool
@@ -30,3 +30,14 @@ def scrape_content(url: str) -> str:
         return text[:5000] # Limit context size
     except Exception as e:
         return f"Error scraping {url}: {str(e)}"
+
+
+@tool
+def save_workout_plan(content: str, filename: str = "workout_plan.md") -> str:
+    """Save the generated workout plan to a local file."""
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(content)
+        return f"Successfully saved plan to {filename}"
+    except Exception as e:
+        return f"Error saving file: {str(e)}"

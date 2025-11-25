@@ -1,12 +1,12 @@
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_chroma import Chroma
+from state import AgentState
+from tools import web_search
+from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.documents import Document
 from models import UserProfile, WeeklySchedule, ExerciseResource, Assessment
-from state import AgentState
-from tools import web_search
-from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -99,7 +99,6 @@ def process_resources(state: AgentState):
     
     return {"resources": resources}
 
-
 def assess_feasibility(state: AgentState):
     """Estimates time to goal and checks feasibility (< 2 years)."""
     print("--- Assessing Feasibility ---")
@@ -124,6 +123,7 @@ def assess_feasibility(state: AgentState):
     })
     
     return {"assessment": assessment}
+
 
 def create_schedule(state: AgentState):
     """Generates the weekly schedule."""

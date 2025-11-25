@@ -58,11 +58,12 @@ I plan to execute these steps to complete my project.
 - [DONE] Step 4: vector embedding (ChromaDB) for context-aware advice.
 - [DONE] Step 5: Feasibility Check - Added logic to assess if the user's goal is realistic within the timeframe.
 - [DONE] Step 6: Create Schedule -  Added logic to create a weekly schedule for given goal.
-- [TODO] Step 7: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule. Added logic for saving output to file.
-- [TODO] Step 8: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
-- [TODO] Step 9: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
-- [TODO] Step 10: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
-- [TODO] Step 11: Final Polish - Refined error handling and verified end-to-end functionality.
+- [DONE] Step 7: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule. 
+- [TODO] Step 8: Save workout plan - Added logic for saving workout plan to file.
+- [TODO] Step 9: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
+- [TODO] Step 10: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
+- [TODO] Step 11: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
+- [TODO] Step 12: Final Polish - Refined error handling and verified end-to-end functionality.
 
 ## Conclusion:
 

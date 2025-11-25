@@ -60,8 +60,8 @@ I plan to execute these steps to complete my project.
 - [DONE] Step 6: Create Schedule -  Added logic to create a weekly schedule for given goal.
 - [DONE] Step 7: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule. 
 - [DONE] Step 8: Save workout plan - Added logic for saving workout plan to file.
-- [TODO] Step 9: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
-- [TODO] Step 10: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
+- [DONE] Step 9: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
+- [DONE] Step 10: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
 - [TODO] Step 11: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
 - [TODO] Step 12: Final Polish - Refined error handling and verified end-to-end functionality.
 

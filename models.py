@@ -27,3 +27,10 @@ class Assessment(BaseModel):
     estimated_time: str = Field(description="Estimated time to achieve the goal.")
     is_feasible: bool = Field(description="True if achievable within 2 years, False otherwise.")
     reason: str = Field(description="Reason for the feasibility assessment.")
+
+class NutritionPlan(BaseModel):
+    diet_type: str = Field(description="Recommended diet type (e.g., High Protein, Keto).")
+    daily_calories: int = Field(description="Estimated daily calorie intake.")
+    macros: str = Field(description="Macronutrient split (e.g., 40% Protein, 30% Carbs, 30% Fat).")
+    meal_suggestions: List[str] = Field(description="List of meal suggestions.")
+    hydration_tips: str = Field(description="Hydration advice.")

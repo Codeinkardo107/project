@@ -125,3 +125,33 @@ def assess_feasibility(state: AgentState):
     
     return {"assessment": assessment}
 
+def create_schedule(state: AgentState):
+    """Generates the weekly schedule."""
+    print("--- Creating Schedule ---")
+    profile = state["profile"]
+    resources = state["resources"]
+    assessment = state["assessment"]
+    
+    parser = PydanticOutputParser(pydantic_object=WeeklySchedule)
+    prompt = ChatPromptTemplate.from_template(
+        "Create a weekly workout schedule for a user with the following profile:\n"
+        "{profile}\n\n"
+        "Estimated Time to Goal: {estimated_time}\n"
+        "Incorporate these key tips/resources:\n"
+        "{resources}\n\n"
+        "{format_instructions}"
+    )
+    chain = prompt | llm | parser
+    schedule = chain.invoke({
+        "profile": profile.model_dump_json(),
+        "estimated_time": assessment.estimated_time,
+        "resources": [r.model_dump_json() for r in resources],
+        "format_instructions": parser.get_format_instructions()
+    })
+    schedule.estimated_time = assessment.estimated_time
+    return {"schedule": schedule}
+
+def update_constraints(state: AgentState):
+    """Updates user constraints based on feedback."""
+    print("--- Updating Constraints ---")
+    return {"iteration_count": state["iteration_count"] + 1}

@@ -57,7 +57,7 @@ I plan to execute these steps to complete my project.
 - [DONE] Step 3: RAG Pipeline - Implemented web search (Tavily), content scraping
 - [DONE] Step 4: vector embedding (ChromaDB) for context-aware advice.
 - [DONE] Step 5: Feasibility Check - Added logic to assess if the user's goal is realistic within the timeframe.
-- [TODO] Step 6: Create Schedule -  Added logic to create a weekly schedule for given goal.
+- [DONE] Step 6: Create Schedule -  Added logic to create a weekly schedule for given goal.
 - [TODO] Step 7: Nutrition Integration - Implemented a parallel node to generate a nutrition plan alongside the workout schedule. Added logic for saving output to file.
 - [TODO] Step 8: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
 - [TODO] Step 9: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.

@@ -10,15 +10,13 @@ import subprocess
 import base64
 import requests
 import atexit
+load_dotenv()
 
 # For opening output file.
 def open_md_file():
     filename = "workout_plan.md"
     if os.path.exists(filename):
         os.startfile(filename)
-
-# Load environment variables
-load_dotenv()
 
 def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "1"):
     # Define Graph
@@ -34,7 +32,7 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
     workflow.add_node("update_constraints", update_constraints)
     workflow.add_node("save_plan", save_plan)
 
-    # Define Edges
+    # Edges
     workflow.set_entry_point("collect_profile")
     workflow.add_edge("collect_profile", "search_exercises")
     workflow.add_edge("search_exercises", "process_resources")
@@ -67,7 +65,56 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
     workflow.add_edge("save_plan", END)
 
     
+    
 
+    # Config for this thread
+    config = {"configurable": {"thread_id": thread_id}}
+
+    print(f"Starting Agent with input: {user_input}")
+    initial_state = {
+        "user_input": user_input, 
+        "iteration_count": 0, 
+        "resources": [],
+        "include_youtube": include_youtube
+    }
+    
+    # 1. Run until Schedule is created
+    app.invoke(initial_state, config=config)
+    
+    # Loop for feedback
+    while True:
+        snapshot = app.get_state(config)
+        if not snapshot.values.get("schedule"):
+            print("Error: No schedule generated.")
+            break
+            
+        schedule = snapshot.values["schedule"]
+        print("\n--- Generated Schedule ---")
+        print(f"Estimated Time: {schedule.estimated_time}")
+        print(f"Notes: {schedule.notes}")
+        # Print first day as preview
+        if schedule.workouts:
+            w = schedule.workouts[0]
+            print(f"Preview ({w.day}): {', '.join(w.exercises[:3])}...")
+            
+        choice = input("\nDo you approve this plan? (y/n): ").lower()
+        
+        if choice.startswith('y'):
+            print("Approving plan...")
+            # Update state explicitly before resuming
+            app.update_state(config, {"feedback": "approve"}, as_node="create_schedule")
+            # Resume execution
+            app.invoke(None, config=config) 
+            break # Done
+        else:
+            print("Requesting changes...")
+            new_constraints = input("What would you like to change? (e.g., 'more days', 'less time'): ")
+            # Update state with new feedback
+            app.update_state(config, {"feedback": new_constraints}, as_node="create_schedule")
+            # Resume execution
+            app.invoke(None, config=config)
+            # The graph will run update_constraints -> create_schedule and interrupt again
+            continue
 
 
 if __name__ == "__main__":

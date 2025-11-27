@@ -7,7 +7,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.documents import Document
 from models import UserProfile, WeeklySchedule, ExerciseResource, Assessment
-
 load_dotenv()
 
 # Initialize LLM and Embeddings
@@ -108,7 +107,9 @@ def assess_feasibility(state: AgentState):
     prompt = ChatPromptTemplate.from_template(
         "Assess the feasibility of the following fitness goal.\n"
         "Profile: {profile}\n"
-        "Provide a REALISTIC time estimate based on standard fitness progression (progressive overload).\n"
+        "1. Analyze the gap between Current Fitness and Goal.\n"
+        "2. Consider general conditioning: A user with high reps in other areas (e.g., 100+ pushups) has high work capacity and should be assigned a SHORTER estimated time compared to someone with lower general fitness, even for unrelated skills.\n"
+        "3. Provide a REALISTIC time estimate based on progressive overload.\n"
         "Examples:\n"
         "- 10 -> 50 pushups: 7-10 weeks\n"
         "- 0 -> 10 pullups: 3-6 months\n"
@@ -154,4 +155,35 @@ def create_schedule(state: AgentState):
 def update_constraints(state: AgentState):
     """Updates user constraints based on feedback."""
     print("--- Updating Constraints ---")
-    return {"iteration_count": state["iteration_count"] + 1}
+    profile = state["profile"]
+    feedback = state.get("feedback", "")
+    
+    if not feedback:
+        return {}
+
+    parser = PydanticOutputParser(pydantic_object=UserProfile)
+    prompt = ChatPromptTemplate.from_template(
+        "Update the following user fitness profile based on the user's feedback.\n"
+        "Current Profile:\n{profile}\n\n"
+        "User Feedback: {feedback}\n\n"
+        "Update the profile fields (e.g., time_per_day, days_per_week, equipment) to reflect the feedback.\n"
+        "Keep other fields unchanged unless the feedback explicitly contradicts them.\n"
+        "{format_instructions}"
+    )
+    
+    chain = prompt | llm | parser
+    try:
+        updated_profile = chain.invoke({
+            "profile": profile.model_dump_json(),
+            "feedback": feedback,
+            "format_instructions": parser.get_format_instructions()
+        })
+        print(f"Updated Profile: {updated_profile}")
+        return {
+            "profile": updated_profile, 
+            "iteration_count": state["iteration_count"] + 1,
+            "feedback": None # Clear feedback after processing
+        }
+    except Exception as e:
+        print(f"Error updating profile: {e}")
+        return {"iteration_count": state["iteration_count"] + 1}

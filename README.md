@@ -27,7 +27,6 @@ The first purpose of the capstone project is to give a chance to revise all the 
 ## Title: AI Fitness Goal Coach
 
 ## Overview
-
 My project is a personalized training guidance system that helps users achieve specific fitness or calisthenics goals such as muscle-ups, handstands, planche progressions or general strength development. It also gives a link to follow tutorial for any exercise if you don't know how to perfomr it correctly(Form is a very important factor). It also provides a dailt nutrition plan including calories consumed, water content, protein content, carbs content, fats content. Unlike traditional workout plans that follow a fit approach, this system creates a customized, step-by-step progression plan based entirely on the user’s current fitness level, available equipment, time constraints, and desired goal.
 
 After user gives their input they are given a preview of what a single day is like, then the user is asked if he needs to change the time or number of day. The system will modify future steps accordingly. Overall, this project focuses on simplicity, safety, and offering a smart and adaptable way to reach fitness goals without needing a coach, gym membership, or prior experience or needing to search the web and then calculate the schedule and nutritoin plan.

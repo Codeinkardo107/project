@@ -65,7 +65,50 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
     workflow.add_edge("save_plan", END)
 
     
-    
+    # Compile with Checkpointer and Interrupt
+    memory = MemorySaver()
+    app = workflow.compile(checkpointer=memory, interrupt_after=["create_schedule"])
+
+    # Save Graph Image
+    try:
+        # mermaid code
+        mermaid_code = app.get_graph().draw_mermaid()
+        
+        # Save mermaid code to file
+        with open("graph.mmd", "w") as f:
+            f.write(mermaid_code)
+        
+        cli_success = False
+        try:
+            result = subprocess.run(
+                ["mmdc", "-i", "graph.mmd", "-o", "output_graph.jpg"],
+                capture_output=True,
+                text=True
+            )
+            if result.returncode == 0:
+                cli_success = True
+        except FileNotFoundError:
+            pass 
+
+        if not cli_success:
+            try:
+                graphbytes = mermaid_code.encode("utf8")
+                base64_bytes = base64.b64encode(graphbytes)
+                base64_string = base64_bytes.decode("ascii")
+                
+                url = "https://mermaid.ink/img/" + base64_string
+                response = requests.get(url)
+                
+                if response.status_code == 200:
+                    with open("output_graph.png", "wb") as f:
+                        f.write(response.content)
+                else:
+                    print(f"Remote rendering failed: {response.status_code}")
+            except Exception as e:
+                print(f"Remote rendering error: {e}")
+
+    except Exception as e:
+        print(f"Graph generation failed: {e}")
 
     # Config for this thread
     config = {"configurable": {"thread_id": thread_id}}

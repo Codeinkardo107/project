@@ -62,7 +62,9 @@ I plan to execute these steps to complete my project.
 - [DONE] Step 9: Feedback Loop - Added a "Human-in-the-loop" cycle to allow users to review and modify the plan before saving.
 - [DONE] Step 10: Graph Construction - Built the LangGraph workflow with nodes for profiling, searching, and scheduling.
 - [DONE] Step 11: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
-- [TODO] Step 12: Final Polish - Refined error handling and verified end-to-end functionality.
+- [DONE] Step 12: Changing some logic in the output file and the way of updating the workout plan.
+- [TODO] Step 13: Building a streamlit app to interact easily with the agent.
+- [TODO] Step 14: Final Polishing of code - Refined error handling and verified end-to-end functionality.
 
 ## Conclusion:
 

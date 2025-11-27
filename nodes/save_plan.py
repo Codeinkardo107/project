@@ -29,7 +29,10 @@ def save_plan(state: AgentState):
         resources = state.get("resources", [])
         if resources:
             content += "\n## Recommended Resources\n"
+            include_youtube = state.get("include_youtube", False)
             for res in resources:
+                if include_youtube:
+                    content += f"- [{res.title}]({res.url})\n"
                 if res.key_tips:
                     for tip in res.key_tips:
                         content += f"  - *Tip:* {tip}\n"

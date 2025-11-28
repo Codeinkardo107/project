@@ -125,7 +125,7 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
             break
             
         schedule = snapshot.values["schedule"]
-        print("\n **Your Personalized Plan is Ready!** ✨")
+        print("\n *Your Personalized Plan is Ready!* ")
         print(f"Estimated Time to Goal:** {schedule.estimated_time}")
         print(f"Coach's Notes:** {schedule.notes}")
         

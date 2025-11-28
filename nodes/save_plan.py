@@ -3,7 +3,7 @@ from tools import save_workout_plan
 
 def save_plan(state: AgentState):
     """Saves the plan to a file (MCP)."""
-    print("--- Saving Plan ---")
+    print("--Saving Plan")
     schedule = state["schedule"]
     nutrition = state.get("nutrition")
     

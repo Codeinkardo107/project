@@ -114,6 +114,7 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
     }
     
     # 1. Run until Schedule is created
+    print("\n Kickstarting your fitness journey... I'm analyzing your profile and finding the best resources.")
     app.invoke(initial_state, config=config)
     
     # Loop for feedback
@@ -124,15 +125,16 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
             break
             
         schedule = snapshot.values["schedule"]
-        print("\n--- Generated Schedule ---")
-        print(f"Estimated Time: {schedule.estimated_time}")
-        print(f"Notes: {schedule.notes}")
+        print("\n **Your Personalized Plan is Ready!** ✨")
+        print(f"Estimated Time to Goal:** {schedule.estimated_time}")
+        print(f"Coach's Notes:** {schedule.notes}")
+        
         # Print first day as preview
         if schedule.workouts:
             w = schedule.workouts[0]
             print(f"Preview ({w.day}): {', '.join(w.exercises[:3])}...")
             
-        choice = input("\nDo you approve this plan? (y/n): ").lower()
+        choice = input("\nDo you approve this plan? (Y/N): ").lower()
         
         if choice.startswith('y'):
             print("Approving plan...")
@@ -153,19 +155,20 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
 
 
 if __name__ == "__main__":
-    print("--- AI Fitness Coach Setup ---")
+    print("\n-Welcome to your AI Fitness Coach!")
+    print("I'm here to build a custom workout plan just for you. Let's get to know your goals.\n")
     import uuid
     from langgraph.types import Command
     
     thread_id = str(uuid.uuid4())
     
     if 'goal' not in locals():
-        goal = input("Enter your fitness goal (e.g., '1 muscleup'): ")
+        goal = input("What is your main fitness goal? (e.g., '1 muscleup', 'run 5k'): ")
         current = input("Enter your current fitness level (comma separated values; e.g., '10 pushups'): ")
         time = input("Time available per day (in mins, default 30): ") or "30"
         days = input("Workout days per week (default 3): ") or "3"
-        equipment = input("Equipment available (e.g., 'pullup bar', default 'none'): ") or "none"
-        youtube = input("Do you want YouTube video links? (y/n): ").lower().startswith('y')
+        equipment = input("What equipment do you have access to? (e.g., 'pullup bar', 'gym', default 'none'): ") or "none"
+        youtube = input("Would you like YouTube video tutorials included? (y/n): ").lower().startswith('y')
 
     user_in = (
         f"Goal: {goal}. "

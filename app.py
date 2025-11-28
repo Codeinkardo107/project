@@ -10,7 +10,7 @@ from nodes.save_plan import save_plan
 import os
 
 # Page Config
-st.set_page_config(page_title="AI Fitness Coach", page_icon="💪", layout="wide")
+st.set_page_config(page_title="AI Fitness Coach", page_icon="🏋️ ", layout="wide")
 
 # Custom CSS
 st.markdown("""
@@ -41,10 +41,6 @@ if "nutrition" not in st.session_state:
     st.session_state.nutrition = None
 
 if "app" not in st.session_state:
-    # Re-create the graph here to persist it in session state if needed, 
-    # or just re-compile it every time. Re-compiling is safer for statelessness unless we need the exact object.
-    # However, MemorySaver is in-memory, so we need to keep the 'memory' object or the 'app' object alive 
-    # if we want to use checkpointers.
     pass
 
 # Graph Definition (Same as main.py but adapted for Streamlit)
@@ -109,7 +105,7 @@ with st.sidebar:
 st.title("AI Fitness Coach")
 
 if start_btn:
-    with st.spinner("Generating your personalized plan... This may take a minute."):
+    with st.spinner("Generating your personalized plan... This may take 1-2 minutes."):
         user_input = (
             f"Goal: {goal}. "
             f"Current Level: {current_fitness}. "

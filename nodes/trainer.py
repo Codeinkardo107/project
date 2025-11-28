@@ -15,7 +15,7 @@ embeddings = OpenAIEmbeddings()
 
 def collect_profile(state: AgentState):
     """Extracts user profile from natural language input."""
-    print("--- Collecting Profile ---")
+    print("--Collecting Profile")
     parser = PydanticOutputParser(pydantic_object=UserProfile)
     prompt = ChatPromptTemplate.from_template(
         "Extract the user's fitness profile from the following description.\n"
@@ -36,7 +36,7 @@ def collect_profile(state: AgentState):
 
 def search_exercises(state: AgentState):
     """This searches for exercises based on the goal."""
-    print("--- Searching Exercises ---")
+    print("--Searching Exercises")
     profile = state["profile"]
     if not profile:
         return {}
@@ -48,7 +48,7 @@ def search_exercises(state: AgentState):
 
 def process_resources(state: AgentState):
     """This scrapes content, creates vector store, and retrieves key tips (RAG)."""
-    print("--- Processing Resources ---")
+    print("--Processing Resources")
     profile = state["profile"]
     include_youtube = state.get("include_youtube", False)
     
@@ -99,7 +99,7 @@ def process_resources(state: AgentState):
 
 def assess_feasibility(state: AgentState):
     """Estimates time to goal and checks feasibility (< 2 years)."""
-    print("--- Assessing Feasibility ---")
+    print("--Assessing Feasibility")
     profile = state["profile"]
     
     parser = PydanticOutputParser(pydantic_object=Assessment)
@@ -130,7 +130,7 @@ def assess_feasibility(state: AgentState):
 
 def create_schedule(state: AgentState):
     """Generates the weekly schedule."""
-    print("--- Creating Schedule ---")
+    print("--Creating Schedule")
     profile = state["profile"]
     resources = state["resources"]
     assessment = state["assessment"]
@@ -156,7 +156,7 @@ def create_schedule(state: AgentState):
 
 def update_constraints(state: AgentState):
     """Updates user constraints based on feedback."""
-    print("--- Updating Constraints ---")
+    print("--Updating Constraints")
     profile = state["profile"]
     feedback = state.get("feedback", "")
     

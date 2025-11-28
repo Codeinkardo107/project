@@ -6,7 +6,7 @@ from models import NutritionPlan
 
 def generate_nutrition(state: AgentState):
     """Generates a nutrition plan based on the profile."""
-    print("--- Generating Nutrition Plan ---")
+    print("--Generating Nutrition Plan")
     profile = state["profile"]
     
     llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)

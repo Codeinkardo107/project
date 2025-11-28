@@ -85,7 +85,6 @@ def process_resources(state: AgentState):
     
     relevant_docs = retriever.invoke(f"tips and form cues for {profile.goal}")
     context = "\n".join([d.page_content for d in relevant_docs])
-    
     tip_prompt = ChatPromptTemplate.from_template(
         "Based on the following text, extract 3 key form tips for {goal}.\n"
         "Text: {context}"
@@ -109,11 +108,15 @@ def assess_feasibility(state: AgentState):
         "Profile: {profile}\n"
         "1. Analyze the gap between Current Fitness and Goal.\n"
         "2. Consider general conditioning: A user with high reps in other areas (e.g., 100+ pushups) has high work capacity and should be assigned a SHORTER estimated time compared to someone with lower general fitness, even for unrelated skills.\n"
-        "3. Provide a REALISTIC time estimate based on progressive overload.\n"
+        "3. **CRITICAL: Factor in Training Volume**:\n"
+        "   - **Days per Week**: Training 6-7 days/week should result in a significantly FASTER timeline (approx 30-40% faster) than training 2-3 days/week, assuming recovery is managed.\n"
+        "   - **Time per Day**: More time allows for more volume/accessory work, further accelerating progress.\n"
+        "4. Provide a REALISTIC time estimate based on progressive overload.\n"
         "Examples:\n"
-        "- 10 -> 50 pushups: 7-10 weeks\n"
-        "- 0 -> 10 pullups: 3-6 months\n"
-        "- Learning a handstand: 6-10 months\n"
+        "- 10 -> 50 pushups (3 days/week): 8-10 weeks\n"
+        "- 10 -> 50 pushups (6 days/week): 5-7 weeks\n"
+        "- 0 -> 10 pullups (3 days/week): 4-5 months\n"
+        "- 0 -> 10 pullups (6 days/week): 2.5-3.5 months\n"
         "Is it achievable within 2 years with the given time constraints?\n"
         "{format_instructions}"
     )
@@ -124,7 +127,6 @@ def assess_feasibility(state: AgentState):
     })
     
     return {"assessment": assessment}
-
 
 def create_schedule(state: AgentState):
     """Generates the weekly schedule."""

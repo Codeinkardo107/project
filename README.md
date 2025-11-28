@@ -27,9 +27,10 @@ The first purpose of the capstone project is to give a chance to revise all the 
 ## Title: AI Fitness Goal Coach
 
 ## Overview
+
 My project is a personalized training guidance system that helps users achieve specific fitness or calisthenics goals such as muscle-ups, handstands, planche progressions or general strength development. It also gives a link to follow tutorial for any exercise if you don't know how to perfomr it correctly(Form is a very important factor). It also provides a dailt nutrition plan including calories consumed, water content, protein content, carbs content, fats content. Unlike traditional workout plans that follow a fit approach, this system creates a customized, step-by-step progression plan based entirely on the user’s current fitness level, available equipment, time constraints, and desired goal.
 
-After user gives their input they are given a preview of what a single day is like, then the user is asked if he needs to change the time or number of day. The system will modify future steps accordingly. Overall, this project focuses on simplicity, safety, and offering a smart and adaptable way to reach fitness goals without needing a coach, gym membership, or prior experience or needing to search the web and then calculate the schedule and nutritoin plan.
+After user gives their input they are given a preview of what a single day is like, then the user is asked if he needs to change the time or number of day. The system will modify the workout accordingly. Overall, this project focuses on simplicity, safety, and offering a smart and adaptable way to reach fitness goals without needing a coach, gym membership, or prior experience or needing to search the web and then calculate the schedule and nutritoin plan.
 
 ## Reason for picking up this project
 
@@ -64,11 +65,13 @@ I plan to execute these steps to complete my project.
 - [DONE] Step 11: Visualization & Output - Implemented graph visualization (with remote fallback) and Markdown file generation with resource links.
 - [DONE] Step 12: Changing some logic in the output file and the way of updating the workout plan.
 - [DONE] Step 13: Building a streamlit app to interact easily with the agent.
-- [TODO] Step 14: Final Polishing of code - Refined error handling and verified end-to-end functionality.
+- [DONE] Step 14: Final Polishing of code - Refined error handling and verified end-to-end functionality.
 
 ## Conclusion:
 
-I had planned to achieve {this this}. I think I have/have-not achieved the conclusion satisfactorily. The reason for your satisfaction/unsatisfaction.
+I planned to build a tool that could take the guesswork out of fitness planning, and I think I've achieved that. The project combines major things we learned in the class — RAG, LangGraph, and tool calling into something practical.
+
+I'm particularly proud of the feasibility assessment logic; it took some tweaking to get the AI to give realistic time estimates, but it works well now. The search for youtube links is also vey usefull in form of learning. Transitioning to a Streamlit UI was the final touch that made the app feel complete. It's a usable tool. I'm satisfied with the result because it solves the exact problem I faced: finding a clear, personalized path to a fitness goal without needing a human coach.
 
 ----------
 

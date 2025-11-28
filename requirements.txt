@@ -10,3 +10,4 @@ langchain-tavily
 pillow
 requests
 langchain-chroma
+streamlit

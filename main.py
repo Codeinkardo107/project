@@ -1,4 +1,3 @@
-import os
 from dotenv import load_dotenv
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.graph import StateGraph, END
@@ -9,14 +8,7 @@ from nodes.save_plan import save_plan
 import subprocess
 import base64
 import requests
-import atexit
 load_dotenv()
-
-# For opening output file.
-def open_md_file():
-    filename = "workout_plan.md"
-    if os.path.exists(filename):
-        os.startfile(filename)
 
 def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "1"):
     # Define Graph
@@ -61,7 +53,7 @@ def run_agent(user_input: str, include_youtube: bool = False, thread_id: str = "
         }
     )
     
-    workflow.add_edge("update_constraints", "create_schedule") # Cycle back
+    workflow.add_edge("update_constraints", "assess_feasibility") # Cycle back to re-assess
     workflow.add_edge("save_plan", END)
 
     
@@ -184,6 +176,3 @@ if __name__ == "__main__":
     )
     
     run_agent(user_in, include_youtube=youtube, thread_id=thread_id)
-
-    # For opening the output file.
-    atexit.register(open_md_file)
